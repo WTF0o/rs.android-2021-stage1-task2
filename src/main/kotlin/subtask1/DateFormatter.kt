@@ -11,13 +11,12 @@ class DateFormatter {
         //throw NotImplementedError("Not implemented")
         val calendar: GregorianCalendar = GregorianCalendar()
         calendar.isLenient = false
-        try {
+        return try {
             calendar.set(year.toInt(), month.toInt() - 1, day.toInt())
-            val formatter: SimpleDateFormat = SimpleDateFormat("d MMMM, EEEE")
-            return  formatter.format(calendar.time)
-        }
-        catch (e: Exception){
-            return "Такого дня не существует"
+            val formatter: SimpleDateFormat = SimpleDateFormat("d MMMM, EEEE", Locale("ru"))
+            formatter.format(calendar.time)
+        } catch (e: Exception){
+            "Такого дня не существует"
         }
 
     }
